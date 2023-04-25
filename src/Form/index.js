@@ -64,7 +64,6 @@ const Form = () => {
 
                 <button className="form__button">Przelicz!</button>
                 <div className="form__container">
-                    <p>Złotych: {amount}</p>
                     <p>Kurs: {currency}</p>
                     <Result 
                     result={result}
