@@ -6,15 +6,19 @@ const Clock = () => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
-        const timer = setInterval(() => {
+        const clock = setInterval(() => {
             setTime(new Date());
         }, 1000);
+
+        return () => {
+            clearInterval(clock);
+        }
     }, []);
 
 
     return (
-        <div 
-        className="clock">
+        <div
+            className="clock">
             Dziś jest: {time.toLocaleString()}
         </div>
 
