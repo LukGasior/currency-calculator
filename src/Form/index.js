@@ -32,10 +32,9 @@ const Form = () => {
             <form
                 onSubmit={onFormSubmit}>
                 <p>
-                    <Label className="form__label">
-                        <Span className="form__text">Kwota w zł:</Span>
-                        <Input className="form__Input"
-
+                    <Label>
+                        <Span>Kwota w zł:</Span>
+                        <Input
                             type="number"
                             min="0"
                             placeholder="Podaj kwotę w zł"
@@ -46,10 +45,9 @@ const Form = () => {
                     </Label>
                 </p>
                 <p>
-                    <Label className="form__label">
-                        <Span className="form__text">Waluta:</Span>
+                    <Label>
+                        <Span>Waluta:</Span>
                         <Select
-                            className="form__Input"
                             type="number"
                             onChange={(e) => SetCurrency(e.target.value)}
                             value={currency}
@@ -64,7 +62,7 @@ const Form = () => {
                                 </option>))}
                         </Select> </Label></p>
 
-                <Button className="form__Button">Przelicz!</Button>
+                <Button>Przelicz!</Button>
                 <div>
                     <p>Kurs: {currency}</p>
                     <Result
