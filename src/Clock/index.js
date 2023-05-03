@@ -17,9 +17,19 @@ const Clock = () => {
 
 
     return (
-        <Div
-            className="clock">
-            Dziś jest: {time.toLocaleString()}
+        <Div>
+            Dziś jest: {time.toLocaleDateString("pl-PL",
+                {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                }
+
+            )}
         </Div>
 
     );
