@@ -1,7 +1,9 @@
 import { CurrienciesValue } from "../CurrienciesValue";
 import { useState } from "react";
 import Result from "./Result";
-import "./style.css"
+
+
+import { Label, Span, Input, Button, Select } from "./style";
 
 
 const Form = () => {
@@ -30,9 +32,9 @@ const Form = () => {
             <form
                 onSubmit={onFormSubmit}>
                 <p>
-                    <label className="form__label">
-                        <span className="form__text">Kwota w zł:</span>
-                        <input className="form__input"
+                    <Label className="form__label">
+                        <Span className="form__text">Kwota w zł:</Span>
+                        <Input className="form__Input"
 
                             type="number"
                             min="0"
@@ -41,13 +43,13 @@ const Form = () => {
                             onChange={(e) => SetAmount(e.target.value)}
                             autoFocus
                         />
-                    </label>
+                    </Label>
                 </p>
                 <p>
-                    <label className="form__label">
-                        <span className="form__text">Waluta:</span>
-                        <select
-                            className="form__input"
+                    <Label className="form__label">
+                        <Span className="form__text">Waluta:</Span>
+                        <Select
+                            className="form__Input"
                             type="number"
                             onChange={(e) => SetCurrency(e.target.value)}
                             value={currency}
@@ -60,13 +62,13 @@ const Form = () => {
                                 >
                                     {currency.name}
                                 </option>))}
-                        </select> </label></p>
+                        </Select> </Label></p>
 
-                <button className="form__button">Przelicz!</button>
-                <div className="form__container">
+                <Button className="form__Button">Przelicz!</Button>
+                <div>
                     <p>Kurs: {currency}</p>
-                    <Result 
-                    result={result}
+                    <Result
+                        result={result}
                     />
 
                 </div>

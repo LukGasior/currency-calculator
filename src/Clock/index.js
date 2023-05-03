@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./style.css"
+import { Div } from "./styled";
 
 const Clock = () => {
 
@@ -17,10 +17,10 @@ const Clock = () => {
 
 
     return (
-        <div
+        <Div
             className="clock">
             Dziś jest: {time.toLocaleString()}
-        </div>
+        </Div>
 
     );
 }

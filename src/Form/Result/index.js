@@ -1,13 +1,13 @@
-import "./style.css"
+import { Div } from "./style";
 
 const Result = ({ result }) => (
 
-    <p className="paragraph">
+    <Div>
         {result !== undefined && (
             <> Otrzymasz: {result.newResult.toFixed(2)} {result.shortName}
             </>
 
-        )}</p>
+        )} </Div>
 )
 
 export default Result;
