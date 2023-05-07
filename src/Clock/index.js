@@ -1,35 +1,28 @@
-import { useEffect, useState } from "react";
 import { Div } from "./styled";
+import { useCurrentDate } from "./useCurrentDate";
+
+
+const formatDate = (time) => time.toLocaleDateString("pl-PL",
+    {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+    }
+
+);
+
 
 const Clock = () => {
-
-    const [time, setTime] = useState(new Date());
-
-    useEffect(() => {
-        const clock = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(clock);
-        }
-    }, []);
+    const time = useCurrentDate();
 
 
     return (
         <Div>
-            Dziś jest: {time.toLocaleDateString("pl-PL",
-                {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                }
-
-            )}
+            Dziś jest: {formatDate(time)}
         </Div>
 
     );
