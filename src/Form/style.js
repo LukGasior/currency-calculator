@@ -32,7 +32,7 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.color.dingley};;
     border: none;
     border-radius: 10px;
-    color: white;
+    color: ${({ theme }) => theme.color.white};
     font-size: 15px;
     font-weight: 700;
     display: block;
@@ -42,7 +42,7 @@ export const Button = styled.button`
     &:hover {
     filter: brightness(130%);
     border: none;
-    color: white;
+    color: ${({ theme }) => theme.color.white};
     }
 `;
 
