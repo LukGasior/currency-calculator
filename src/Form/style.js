@@ -19,17 +19,17 @@ export const Input = styled.input`
     padding: 5px;
     font-size: 15px;
     border-width: 0px;
-    border-color: #CCCCCC;
-    background-color: #FFFFFF;
-    color: #000000;
+    border-color: ${({ theme }) => theme.color.silver};
+    background-color: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.black};
     border-style: solid;
     border-radius: 28px;
-    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    box-shadow: 0px 0px 5px ${({ theme }) => theme.color.tundora};
 
 `;
 
 export const Button = styled.button`
-    background-color: rgb(107, 134, 77);
+    background-color: ${({ theme }) => theme.color.dingley};;
     border: none;
     border-radius: 10px;
     color: white;
@@ -40,7 +40,7 @@ export const Button = styled.button`
     height: 35px;
 
     &:hover {
-    background-color: rgb(161, 201, 116);
+    filter: brightness(130%);
     border: none;
     color: white;
     }
@@ -52,11 +52,11 @@ export const Select = styled.select`
     padding: 5px;
     font-size: 15px;
     border-width: 0px;
-    border-color: #CCCCCC;
-    background-color: #FFFFFF;
-    color: #000000;
+    border-color: ${({ theme }) => theme.color.silver};
+    background-color: ${({ theme }) => theme.color.white};
+    color: ${({ theme }) => theme.color.black};
     border-style: solid;
     border-radius: 28px;
-    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    box-shadow: 0px 0px 5px ${({ theme }) => theme.color.tundora};
     
 `;
