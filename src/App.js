@@ -1,15 +1,17 @@
 import Form from "./Form";
 import Clock from "./Clock";
-import "./App.css";
+import { Wrapper, Header } from "./style"
 
 
 function App() {
   return (
-    <div className="App">
+    <Wrapper>
       <Clock />
-      <h1 className="header">Kalkulator walut</h1>
+      <Header>
+        Kalkulator walut
+      </Header>
       <Form />
-    </div>
+    </Wrapper>
   );
 }
 
