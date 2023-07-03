@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
     padding: 15px;
 
     @media (max-width: ${({ theme }) => theme.brakepoint.mobileMax}px) {
-        width: 500px;
-        margin: 10px;
+        max-width: 400px;
+        margin: 0 auto;
 
 }`;
 
