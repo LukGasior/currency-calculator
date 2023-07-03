@@ -1,30 +1,33 @@
-import { CurrienciesValue } from "../CurrienciesValue";
+import { useRatesData } from "../CurrienciesValue";
+import { ratesData } from "../CurrienciesValue";
 import { useState } from "react";
 import Result from "./Result";
-
-
 import { Label, Span, Input, Button, Select } from "./style";
 
 
 const Form = () => {
     const [amount, SetAmount] = useState("");
-    const [currency, SetCurrency] = useState(CurrienciesValue[0].exRate);
-    const [result, SetResult] = useState();
+    const [currency, setCurrency] = useState();
+    const [result, setResult] = useState();
+    const ratesData = useRatesData();
+
+
+    const calculateResult = (currency, amount) => {
+        const rate = ratesData.rates[currency];
+        setResult(
+            {
+                newAmount: +amount,
+                newResult: amount / rate,
+                currency,
+            },
+        );
+
+    }
+
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-        const shortName = CurrienciesValue
-            .find(({ exRate }) => exRate === (+currency)).shortName;
-
-        SetResult(
-            {
-                newAmount: +amount,
-                newResult: amount / currency,
-                currency,
-                shortName,
-
-            },
-        );
+        calculateResult(currency, amount);
     }
     return (
 
@@ -49,22 +52,23 @@ const Form = () => {
                         <Span>Waluta:</Span>
                         <Select
                             type="number"
-                            onChange={(e) => SetCurrency(e.target.value)}
+                            onChange={(e) => setCurrency(e.target.value)}
                             value={currency}
                         >
-
-                            {CurrienciesValue.map(currency => (
+                            {!!ratesData.rates && Object.keys(ratesData.rates).map((currency) => (
                                 <option
-                                    key={currency.shortName}
-                                    value={currency.exRate}
+                                    key={currency}
+                                    value={currency}
                                 >
-                                    {currency.name}
+                                    {currency}
                                 </option>))}
+
+
                         </Select> </Label></p>
 
                 <Button>Przelicz!</Button>
                 <div>
-                    <p>Kurs: {currency}</p>
+
                     <Result
                         result={result}
                     />
