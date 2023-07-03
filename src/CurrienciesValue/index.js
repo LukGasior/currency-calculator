@@ -1,17 +1,28 @@
-export const CurrienciesValue = [
-    {
-        name: "Euro",
-        shortName: "EUR",
-        exRate: 4.68,
-    },
-    {
-        name: "Dolar amerykański",
-        shortName: "USD",
-        exRate: 4.29,
-    },
-    {
-        name: "Frank szwajcarski",
-        shortName: "CHF",
-        exRate: 4.74,
-    }
-];
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
+export const useRatesData = () => {
+    const [ratesData, setRatesData] = useState(({
+        state: "Wczytywanie...",
+    }));
+
+    useEffect(() => {
+
+        axios.get("https://api.exchangerate.host/latest?base=PLN&symbols=USD,EUR,CHF,GBP,CNY")
+            .then(response => {
+                const { rates, date } = response.data;
+
+                setRatesData({
+                    state: "Załadowano",
+                    rates,
+                    date,
+                });
+
+            });
+
+    }, []);
+
+    return ratesData;
+
+}
