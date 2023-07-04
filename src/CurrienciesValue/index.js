@@ -9,7 +9,7 @@ export const useRatesData = () => {
 
     useEffect(() => {
 
-        axios.get("https://api.exchangerate.host/latest?base=PLN&symbols=USD,EUR,CHF,GBP,CNY")
+        axios.get("https://api.exchangerate.host/latest?base=PLN&symbols=USD,EUR,CHF,GBP,CNY,JPY")
             .then(response => {
                 const { rates, date } = response.data;
 
