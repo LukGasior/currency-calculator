@@ -1,13 +1,12 @@
 import { useRatesData } from "../CurrienciesValue";
-import { ratesData } from "../CurrienciesValue";
 import { useState } from "react";
 import Result from "./Result";
-import { Label, Span, Input, Button, Select } from "./style";
+import { Label, Span, Input, Button, Select, Paragraph } from "./style";
 
 
 const Form = () => {
-    const [amount, SetAmount] = useState("");
-    const [currency, setCurrency] = useState();
+    const [amount, setAmount] = useState("");
+    const [currency, setCurrency] = useState("CHF");
     const [result, setResult] = useState();
     const ratesData = useRatesData();
 
@@ -24,7 +23,6 @@ const Form = () => {
 
     }
 
-
     const onFormSubmit = (e) => {
         e.preventDefault();
         calculateResult(currency, amount);
@@ -34,19 +32,18 @@ const Form = () => {
         <div>
             <form
                 onSubmit={onFormSubmit}>
-                <p>
-                    <Label>
-                        <Span>Kwota w zł:</Span>
-                        <Input
-                            type="number"
-                            min="0"
-                            placeholder="Podaj kwotę w zł"
-                            value={amount}
-                            onChange={(e) => SetAmount(e.target.value)}
-                            autoFocus
-                        />
-                    </Label>
-                </p>
+                <Label>
+                    <Span>Kwota w zł:</Span>
+                    <Input
+                        type="number"
+                        min="0"
+                        placeholder="Podaj kwotę w zł"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        autoFocus
+                    />
+                </Label>
+
                 <p>
                     <Label>
                         <Span>Waluta:</Span>
@@ -67,15 +64,13 @@ const Form = () => {
                         </Select> </Label></p>
 
                 <Button>Przelicz!</Button>
-                <div>
 
-                    <Result
-                        result={result}
-                    />
+                <Paragraph>Kursy walut pobrane z Europejskiego Banku Centralnego.</Paragraph>
+                <Paragraph>Aktualne na dzień <b>{ratesData.date}</b></Paragraph>
 
-                </div>
             </form>
-
+            <Result
+                    result={result} />
         </div>
     );
 }
