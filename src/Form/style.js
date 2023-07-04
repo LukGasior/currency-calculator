@@ -60,3 +60,10 @@ export const Select = styled.select`
     box-shadow: 0px 0px 5px ${({ theme }) => theme.color.tundora};
     
 `;
+
+export const Paragraph = styled.div`
+line-height: 1.5;
+font-style: italic;
+font-size: small;
+text-align: center;
+`
