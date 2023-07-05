@@ -32,45 +32,62 @@ const Form = () => {
         <div>
             <form
                 onSubmit={onFormSubmit}>
-                <Label>
-                    <Span>Kwota w zł:</Span>
-                    <Input
-                        type="number"
-                        min="0"
-                        placeholder="Podaj kwotę w zł"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        autoFocus
-                    />
-                </Label>
 
-                <p>
-                    <Label>
-                        <Span>Waluta:</Span>
-                        <Select
-                            type="number"
-                            onChange={(e) => setCurrency(e.target.value)}
-                            value={currency}
-                        >
-                            {!!ratesData.rates && Object.keys(ratesData.rates).map((currency) => (
-                                <option
-                                    key={currency}
+                    {ratesData.state === "loading" 
+                    ? (
+                        <div>Trwa wczytywanie kursów walutów...</div>
+                    )
+                    : (
+                        ratesData.state === "error" ? (
+                            <div>Błąd wczytywania, sprawdź połączenie z internetem</div>
+                        ) : (
+                            <>
+                            <Label>
+                            <Span>Kwota w zł:</Span>
+                            <Input
+                                type="number"
+                                min="0"
+                                placeholder="Podaj kwotę w zł"
+                                value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+                                autoFocus
+                            />
+                        </Label>
+        
+                        <p>
+                            <Label>
+                                <Span>Waluta:</Span>
+                                <Select
+                                    type="number"
+                                    onChange={(e) => setCurrency(e.target.value)}
                                     value={currency}
                                 >
-                                    {currency}
-                                </option>))}
+                                    {!!ratesData.rates && Object.keys(ratesData.rates).map((currency) => (
+                                        <option
+                                            key={currency}
+                                            value={currency}
+                                        >
+                                            {currency}
+                                        </option>))}
+        
+        
+                                </Select> </Label></p>
+        
+                        <Button>Przelicz!</Button>
+        
+                        <Paragraph>Kursy walut pobrane z Europejskiego Banku Centralnego.</Paragraph>
+                        <Paragraph>Aktualne na dzień <b>{ratesData.date}</b></Paragraph>
+                        </>
+                        
+                        )
+                    )
+                }
 
-
-                        </Select> </Label></p>
-
-                <Button>Przelicz!</Button>
-
-                <Paragraph>Kursy walut pobrane z Europejskiego Banku Centralnego.</Paragraph>
-                <Paragraph>Aktualne na dzień <b>{ratesData.date}</b></Paragraph>
 
             </form>
+            <p>
             <Result
-                    result={result} />
+                    result={result} /> </p>
         </div>
     );
 }
