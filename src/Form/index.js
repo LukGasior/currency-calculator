@@ -1,7 +1,7 @@
 import { useRatesData } from "../CurrienciesValue";
 import { useState } from "react";
 import Result from "./Result";
-import { Label, Span, Input, Button, Select, Paragraph } from "./style";
+import { Label, Span, Input, Button, Select, Paragraph, Loading, Error } from "./style";
 
 
 const Form = () => {
@@ -35,11 +35,11 @@ const Form = () => {
 
                     {ratesData.state === "loading" 
                     ? (
-                        <div>Trwa wczytywanie kursów walutów...</div>
+                        <Loading>Trwa wczytywanie kursów walutów...</Loading>
                     )
                     : (
                         ratesData.state === "error" ? (
-                            <div>Błąd wczytywania, sprawdź połączenie z internetem</div>
+                            <Error>Błąd wczytywania, sprawdź połączenie z internetem</Error>
                         ) : (
                             <>
                             <Label>

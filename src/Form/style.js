@@ -66,4 +66,13 @@ line-height: 1.5;
 font-style: italic;
 font-size: small;
 text-align: center;
+`;
+
+export const Loading = styled.div`
+text-align: center;
+`;
+
+export const Error = styled.div`
+text-align: center;
+color: red;
 `
